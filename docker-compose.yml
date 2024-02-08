@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  mining:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mining
+    restart: always
+    ports:
+      - 3083:3083
+    environment:
+      - NODE_ENV=production
+      - USER_IDS=18c6a3d8-ae9c-4df9-99d5-39c786d9281f

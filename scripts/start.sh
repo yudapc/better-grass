@@ -3,8 +3,6 @@
 LOCAL_DIR=$(pwd)
 
 # Copy the environment example file and start modifying the contents
-echo Copying the contents of .env.example
-cp "$LOCAL_DIR/.env.example" "$LOCAL_DIR/.env"
 echo Completed
 
 # Ask the user for user IDs
@@ -17,24 +15,10 @@ read -p "User ID/s: " user_ids_var
 sed -i "s/USER_IDS=/USER_IDS=$user_ids_var/g" $LOCAL_DIR/.env
 sed -i "s/NODE_ENV=/NODE_ENV=production/g" $LOCAL_DIR/.env
 
-# Install git
-echo Installing git that will be used for automatic updates
-sudo apt-get update
-sudo apt-get install git-all
-
-# Installing node and npm
-echo Installing NodeJS and NPM which are used for running the actual app
-sudo apt update
-sudo apt install nodejs
-sudo apt install npm
 
 # Install pm2
 echo Installing PM2 that will let the app run forever and restart automatically when it crashses
 sudo npm install -g pm2
-
-# Install all dependencies
-echo Installing all dependencies
-npm install
 
 # Start the app
 echo Starting the app...
